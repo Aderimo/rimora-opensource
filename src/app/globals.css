@@ -1,0 +1,266 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 270 50% 10%;
+    --card: 0 0% 100%;
+    --card-foreground: 270 50% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 270 50% 10%;
+    --primary: 280 70% 50%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 350 70% 50%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 270 20% 95%;
+    /* WCAG AA uyumlu: 4.5:1 kontrast oranı için 40% -> 35% */
+    --muted-foreground: 270 25% 35%;
+    --accent: 280 60% 95%;
+    /* WCAG AA uyumlu: 4.5:1 kontrast oranı için 30% -> 25% */
+    --accent-foreground: 280 75% 25%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 270 20% 90%;
+    --input: 270 20% 90%;
+    --ring: 280 70% 50%;
+    --radius: 0.5rem;
+    /* Placeholder için WCAG AA uyumlu renk */
+    --placeholder: 270 20% 45%;
+  }
+
+  .dark {
+    --background: 270 50% 4%;
+    --foreground: 0 0% 98%;
+    --card: 270 40% 6%;
+    --card-foreground: 0 0% 98%;
+    --popover: 270 40% 6%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 280 70% 55%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 350 70% 55%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 270 30% 15%;
+    /* WCAG AA uyumlu: 4.5:1 kontrast oranı için 65% -> 72% */
+    --muted-foreground: 270 15% 72%;
+    --accent: 280 50% 20%;
+    /* WCAG AA uyumlu: 4.5:1 kontrast oranı için 80% -> 85% */
+    --accent-foreground: 280 60% 85%;
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 270 30% 18%;
+    --input: 270 30% 18%;
+    --ring: 280 70% 55%;
+    /* Placeholder için WCAG AA uyumlu renk */
+    --placeholder: 270 15% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Premium UI Utilities */
+@layer utilities {
+  
+  /* Screen Reader Only - Erişilebilirlik için */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+
+  .not-sr-only {
+    position: static;
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+  }
+
+  /* Focus Visible - Klavye navigasyonu için */
+  .focus-ring {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background;
+  }
+
+  /* Skip Link - Klavye kullanıcıları için */
+  .skip-link {
+    @apply sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-primary focus:text-primary-foreground focus:rounded-md focus-ring;
+  }
+
+  /* Responsive Text Utilities */
+  .text-responsive-xs {
+    @apply text-xs sm:text-sm;
+  }
+
+  .text-responsive-sm {
+    @apply text-sm sm:text-base;
+  }
+
+  .text-responsive-base {
+    @apply text-base sm:text-lg;
+  }
+
+  .text-responsive-lg {
+    @apply text-lg sm:text-xl md:text-2xl;
+  }
+
+  .text-responsive-xl {
+    @apply text-xl sm:text-2xl md:text-3xl;
+  }
+
+  .text-responsive-2xl {
+    @apply text-2xl sm:text-3xl md:text-4xl;
+  }
+
+  .text-responsive-3xl {
+    @apply text-3xl sm:text-4xl md:text-5xl;
+  }
+
+  /* Responsive Spacing */
+  .space-responsive {
+    @apply space-y-4 sm:space-y-6 md:space-y-8;
+  }
+
+  .gap-responsive {
+    @apply gap-2 sm:gap-3 md:gap-4;
+  }
+
+  .p-responsive {
+    @apply p-4 sm:p-6 md:p-8;
+  }
+
+  /* Responsive Grid */
+  .grid-responsive-2 {
+    @apply grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5;
+  }
+
+  .grid-responsive-3 {
+    @apply grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6;
+  }
+
+  /* Touch-friendly tap targets */
+  .tap-target {
+    @apply min-h-[44px] min-w-[44px];
+  }
+
+  /* Neon Glow Effects */
+  .neon-purple {
+    box-shadow: 0 0 5px hsl(280 70% 55%),
+      0 0 10px hsl(280 70% 55% / 0.5),
+      0 0 20px hsl(280 70% 55% / 0.3);
+  }
+
+  .neon-pink {
+    box-shadow: 0 0 5px hsl(350 70% 55%),
+      0 0 10px hsl(350 70% 55% / 0.5),
+      0 0 20px hsl(350 70% 55% / 0.3);
+  }
+
+  .neon-text {
+    text-shadow: 0 0 10px currentColor,
+      0 0 20px currentColor,
+      0 0 40px currentColor;
+  }
+
+  /* Glassmorphism */
+  .glass {
+    background: hsl(270 40% 6% / 0.7);
+    backdrop-filter: blur(12px);
+    border: 1px solid hsl(270 30% 18% / 0.5);
+  }
+
+  .glass-light {
+    background: hsl(0 0% 100% / 0.1);
+    backdrop-filter: blur(12px);
+    border: 1px solid hsl(0 0% 100% / 0.2);
+  }
+
+  /* Animated Gradients */
+  .gradient-animate {
+    background-size: 200% 200%;
+    animation: gradient-shift 8s ease infinite;
+  }
+
+  @keyframes gradient-shift {
+
+    0%,
+    100% {
+      background-position: 0% 50%;
+    }
+
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  /* Shimmer Effect */
+  .shimmer {
+    background: linear-gradient(90deg,
+        transparent 0%,
+        hsl(0 0% 100% / 0.1) 50%,
+        transparent 100%);
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+
+    100% {
+      background-position: 200% 0;
+    }
+  }
+
+  /* Hover Glow */
+  .hover-glow {
+    transition: box-shadow 0.3s ease;
+  }
+
+  .hover-glow:hover {
+    box-shadow: 0 0 20px hsl(280 70% 55% / 0.4);
+  }
+
+  /* Scrollbar Hide */
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+
+/* Message highlight animation */
+@keyframes highlight-flash {
+  0%, 100% {
+    background-color: transparent;
+  }
+  50% {
+    background-color: hsl(var(--primary) / 0.1);
+  }
+}
+
+.highlight-flash {
+  animation: highlight-flash 2s ease-in-out;
+}

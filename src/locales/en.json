@@ -1,0 +1,141 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "retry": "Retry",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "close": "Close",
+    "search": "Search",
+    "seeAll": "See All",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "yes": "Yes",
+    "no": "No",
+    "confirm": "Confirm",
+    "submit": "Submit",
+    "reset": "Reset",
+    "filter": "Filter",
+    "sort": "Sort",
+    "all": "All",
+    "none": "None",
+    "more": "More",
+    "less": "Less"
+  },
+  "nav": {
+    "home": "Home",
+    "movies": "Movies",
+    "series": "Series",
+    "anime": "Anime",
+    "discover": "Discover",
+    "myList": "My List",
+    "profile": "Profile",
+    "settings": "Settings",
+    "logout": "Logout",
+    "login": "Login",
+    "register": "Register"
+  },
+  "search": {
+    "placeholder": "Search movies, series or anime...",
+    "noResults": "No results found",
+    "results": "results found",
+    "searchFor": "Search results for"
+  },
+  "home": {
+    "hero": {
+      "watchNow": "Watch Now",
+      "moreInfo": "More Info",
+      "addToList": "Add to My List"
+    },
+    "sections": {
+      "trending": "Trending",
+      "popular": "Popular",
+      "topRated": "Top Rated",
+      "newReleases": "New Releases",
+      "continueWatching": "Continue Watching",
+      "myList": "My List",
+      "popularMovies": "Popular Movies",
+      "popularSeries": "Popular Series",
+      "popularAnime": "Popular Anime",
+      "recommended": "Recommended for You"
+    }
+  },
+  "media": {
+    "movie": "Movie",
+    "series": "Series",
+    "anime": "Anime",
+    "season": "Season",
+    "episode": "Episode",
+    "episodes": "Episodes",
+    "seasons": "Seasons",
+    "duration": "Duration",
+    "releaseDate": "Release Date",
+    "rating": "Rating",
+    "genres": "Genres",
+    "cast": "Cast",
+    "director": "Director",
+    "overview": "Overview",
+    "similar": "Similar",
+    "trailer": "Trailer",
+    "watch": "Watch",
+    "addToList": "Add to List",
+    "removeFromList": "Remove from List",
+    "inMyList": "In My List"
+  },
+  "player": {
+    "play": "Play",
+    "pause": "Pause",
+    "mute": "Mute",
+    "unmute": "Unmute",
+    "fullscreen": "Fullscreen",
+    "exitFullscreen": "Exit Fullscreen",
+    "settings": "Settings",
+    "quality": "Quality",
+    "audio": "Audio",
+    "subtitles": "Subtitles",
+    "off": "Off",
+    "nextEpisode": "Next Episode",
+    "previousEpisode": "Previous Episode"
+  },
+  "profile": {
+    "myProfile": "My Profile",
+    "watchHistory": "Watch History",
+    "favorites": "Favorites",
+    "watchlist": "Watchlist",
+    "reviews": "My Reviews",
+    "settings": "Account Settings",
+    "editProfile": "Edit Profile"
+  },
+  "auth": {
+    "login": "Login",
+    "register": "Register",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "username": "Username",
+    "forgotPassword": "Forgot Password",
+    "noAccount": "Don't have an account?",
+    "hasAccount": "Already have an account?",
+    "loginWith": "Login with",
+    "orContinueWith": "or continue with"
+  },
+  "theme": {
+    "dark": "Dark",
+    "light": "Light",
+    "system": "System"
+  },
+  "language": {
+    "tr": "Türkçe",
+    "en": "English"
+  },
+  "footer": {
+    "about": "About",
+    "contact": "Contact",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "copyright": "© 2024 Rimora. All rights reserved."
+  }
+}

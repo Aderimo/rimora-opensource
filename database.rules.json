@@ -1,0 +1,168 @@
+{
+  "rules": {
+    "watchParties": {
+      ".read": true,
+      "$roomId": {
+        ".write": "auth != null && (!data.exists() || data.child('hostId').val() === auth.uid || data.child('participants').child(auth.uid).exists())",
+        "hostId": {
+          ".validate": "newData.isString() || newData.val() === null"
+        },
+        "hostName": {
+          ".validate": "newData.isString() || newData.val() === null"
+        },
+        "hostAvatar": {
+          ".validate": "newData.isString() || newData.val() === null"
+        },
+        "roomName": {
+          ".validate": "newData.isString() || newData.val() === null"
+        },
+        "password": {
+          ".validate": "newData.isString() || newData.val() === null"
+        },
+        "isPublic": {
+          ".validate": "newData.isBoolean() || newData.val() === null"
+        },
+        "maxParticipants": {
+          ".validate": "newData.isNumber() || newData.val() === null"
+        },
+        "contentType": {
+          ".validate": "newData.isString() || newData.val() === null"
+        },
+        "mediaId": {
+          ".validate": "newData.isNumber() || newData.val() === null"
+        },
+        "mediaType": {
+          ".validate": "newData.isString() || newData.val() === null"
+        },
+        "mediaTitle": {
+          ".validate": "newData.isString() || newData.val() === null"
+        },
+        "mediaPoster": {
+          ".validate": "newData.isString() || newData.val() === null"
+        },
+        "season": {
+          ".validate": "newData.isNumber() || newData.val() === null"
+        },
+        "episode": {
+          ".validate": "newData.isNumber() || newData.val() === null"
+        },
+        "externalUrl": {
+          ".validate": "newData.isString() || newData.val() === null"
+        },
+        "externalPlatform": {
+          ".validate": "newData.isString() || newData.val() === null"
+        },
+        "createdAt": {
+          ".validate": "newData.isNumber() || newData.val() === null"
+        },
+        "lastActivity": {
+          ".validate": "newData.isNumber() || newData.val() === null"
+        },
+        "emptyAt": {
+          ".validate": "newData.isNumber() || newData.val() === null"
+        },
+        "participants": {
+          "$userId": {
+            ".write": "auth != null && (auth.uid === $userId || data.parent().parent().child('hostId').val() === auth.uid)",
+            "name": {
+              ".validate": "newData.isString() || newData.val() === null"
+            },
+            "avatar": {
+              ".validate": "newData.isString() || newData.val() === null"
+            },
+            "joinedAt": {
+              ".validate": "newData.isNumber() || newData.val() === null"
+            }
+          }
+        },
+        "kickedUsers": {
+          "$userId": {
+            ".write": "auth != null && data.parent().parent().child('hostId').val() === auth.uid",
+            ".validate": "newData.isBoolean() || newData.val() === null"
+          }
+        }
+      }
+    },
+    "wpMessages": {
+      "$roomId": {
+        ".read": true,
+        ".write": "auth != null",
+        "$messageId": {
+          ".write": "auth != null",
+          ".validate": "newData.hasChildren(['userId', 'userName', 'text', 'timestamp', 'type']) || newData.val() === null",
+          "userId": {
+            ".validate": "newData.isString() || newData.val() === null"
+          },
+          "userName": {
+            ".validate": "newData.isString() || newData.val() === null"
+          },
+          "userAvatar": {
+            ".validate": "newData.isString() || newData.val() === null"
+          },
+          "text": {
+            ".validate": "newData.isString() || newData.val() === null"
+          },
+          "timestamp": {
+            ".validate": "newData.isNumber() || newData.val() === null"
+          },
+          "type": {
+            ".validate": "newData.isString() || newData.val() === null"
+          }
+        }
+      }
+    },
+    "wpReactions": {
+      "$roomId": {
+        ".read": true,
+        ".write": "auth != null",
+        "$reactionId": {
+          ".write": "auth != null",
+          ".validate": "newData.hasChildren(['userId', 'emoji', 'timestamp']) || newData.val() === null",
+          "userId": {
+            ".validate": "newData.isString() || newData.val() === null"
+          },
+          "emoji": {
+            ".validate": "newData.isString() || newData.val() === null"
+          },
+          "timestamp": {
+            ".validate": "newData.isNumber() || newData.val() === null"
+          }
+        }
+      }
+    },
+    "wpTyping": {
+      "$roomId": {
+        ".read": true,
+        ".write": "auth != null",
+        "$userId": {
+          ".write": "auth != null && auth.uid === $userId",
+          ".validate": "newData.hasChildren(['name', 'at']) || newData.val() === null",
+          "name": {
+            ".validate": "newData.isString() || newData.val() === null"
+          },
+          "at": {
+            ".validate": "newData.isNumber() || newData.val() === null"
+          }
+        }
+      }
+    },
+    "notifications": {
+      "$uid": {
+        ".read": "auth != null && auth.uid === $uid",
+        ".write": "auth != null"
+      }
+    },
+    "users": {
+      "$uid": {
+        ".read": "auth != null",
+        ".write": "auth != null && auth.uid === $uid"
+      }
+    },
+    "user-profiles": {
+      "$uid": {
+        ".read": true,
+        ".write": "auth != null && auth.uid === $uid"
+      }
+    }
+  }
+}

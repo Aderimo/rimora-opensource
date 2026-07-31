@@ -1,0 +1,117 @@
+{
+  "name": "Rimora",
+  "short_name": "Rimora",
+  "description": "Binlerce film, dizi ve anime keşfet. Puanla, listele, arkadaşlarınla paylaş.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#0A0612",
+  "theme_color": "#A855F7",
+  "lang": "tr",
+  "dir": "ltr",
+  "categories": ["entertainment", "video"],
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "64x64",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/api/icon?size=192",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/api/icon?size=512",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/api/icon/maskable?size=192",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/api/icon/maskable?size=512",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/api/splash?width=1170&height=2532",
+      "sizes": "1170x2532",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Rimora Ana Sayfa"
+    },
+    {
+      "src": "/api/splash?width=2048&height=2732",
+      "sizes": "2048x2732",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Rimora Ana Sayfa - Tablet"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Filmler",
+      "short_name": "Filmler",
+      "description": "Tüm filmleri keşfet",
+      "url": "/filmler",
+      "icons": [
+        {
+          "src": "/api/icon?size=192",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Diziler",
+      "short_name": "Diziler",
+      "description": "Tüm dizileri keşfet",
+      "url": "/diziler",
+      "icons": [
+        {
+          "src": "/api/icon?size=192",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Animeler",
+      "short_name": "Animeler",
+      "description": "Tüm animeleri keşfet",
+      "url": "/animeler",
+      "icons": [
+        {
+          "src": "/api/icon?size=192",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Arama",
+      "short_name": "Ara",
+      "description": "İçerik ara",
+      "url": "/arama",
+      "icons": [
+        {
+          "src": "/api/icon?size=192",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false
+}
