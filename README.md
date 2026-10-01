@@ -1,97 +1,106 @@
+<div align="center">
+
 # Rimora
 
-Next.js 14 + Firebase üzerine kurulu, sosyal özellikleri olan bir **medya keşif ve izleme platformu iskeleti**.
+**A media discovery & tracking platform skeleton with social features.**
 
-Bu proje daha önce yayında olan bir sitenin kod tabanıdır. Site kapatıldı ve proje açık kaynak olarak yayınlandı; kendi platformunu kurmak isteyenler doğrudan kullanabilir.
+[![License](https://img.shields.io/badge/license-MIT-4ADE80)](LICENSE)
+[![Stack](https://img.shields.io/badge/Next.js_14_%2B_Firebase-6B7280)](#tech-stack)
+[![Tests](https://img.shields.io/badge/tests-Vitest_%2B_Playwright-6B7280)](#commands)
 
-> **Proje hiçbir video kaynağı ile birlikte gelmez.** Oynatıcı altyapısı hazırdır ama boştur — kaynakları siz tanımlarsınız. Ayrıntı için [Video kaynakları](#video-kaynakları) bölümüne bakın.
+Built on Next.js 14 + Firebase: catalog, watch history, lists, real-time messaging,
+watch parties and an admin panel — open-sourced after the original site shut down,
+ready for anyone who wants to run their own platform.
+
+**English** · [Türkçe](README.tr.md)
+
+</div>
+
+> **Ships without any video sources.** The player infrastructure is ready but empty —
+> you define your own sources. See [Video sources](#video-sources).
 
 ---
 
-## Neler var
+## What's inside
 
-**İçerik**
-- TMDB tabanlı film / dizi / anime kataloğu, arama ve keşif sayfaları
-- Sezon-bölüm gezinme, izleme geçmişi, kişisel listeler
-- Çoklu sunucu seçimli video oynatıcı iskeleti
+**Content**
+- TMDB-based movie / series / anime catalog, search and discovery pages
+- Season–episode navigation, watch history, personal lists
+- Multi-server video player skeleton
 
-**Sosyal**
-- Gerçek zamanlı mesajlaşma — sabitleme, düzenleme, yanıtlama, thread, mention
-- Birlikte izleme (watch party) odaları
-- Kullanıcı profilleri, aktivite akışı, bildirimler
+**Social**
+- Real-time messaging — pinning, editing, replies, threads, mentions
+- Watch-party rooms
+- User profiles, activity feed, notifications
 
-**Yönetim**
-- Admin paneli ve moderasyon araçları
-- Kullanıcı ticket / geri bildirim sistemi
-- İstatistik sayfaları
+**Administration**
+- Admin panel and moderation tools
+- User ticket / feedback system
+- Statistics pages
 
-**Altyapı**
+**Infrastructure**
 - Firebase Auth, Firestore, Realtime Database, Storage, Cloud Messaging
-- iyzico ile abonelik / ödeme akışı (opsiyonel)
-- Resend ile e-posta, Cloudinary ile görsel yönetimi
-- i18n desteği, SEO bileşenleri, PWA service worker
-- Vitest (birim) + Playwright (E2E) testleri, Firestore güvenlik kuralı testleri
+- Optional iyzico subscription / payment flow
+- Email via Resend, image management via Cloudinary
+- i18n support, SEO components, PWA service worker
+- Vitest (unit) + Playwright (E2E) tests, Firestore security-rule tests
 
----
+## Tech stack
 
-## Teknolojiler
-
-| Katman | Kullanılan |
-|---|---|
+| Layer | Choice |
+| --- | --- |
 | Framework | Next.js 14.0.4 (App Router) |
-| Dil | TypeScript |
+| Language | TypeScript |
 | UI | React 18, Tailwind CSS, Framer Motion |
 | Backend | Firebase 12 (Auth / Firestore / RTDB / Storage / FCM) |
-| Ödeme | iyzipay |
-| E-posta | Resend |
-| Medya | Cloudinary |
-| Test | Vitest, Playwright |
+| Payments | iyzipay |
+| Email | Resend |
+| Media | Cloudinary |
+| Tests | Vitest, Playwright |
 
-**Gereksinim:** Node.js >= 20
+**Requirement:** Node.js >= 20
 
----
+## Setup
 
-## Kurulum
-
-### 1. Projeyi alın
+### 1. Get the project
 
 ```bash
-git clone https://github.com/Aderimo/Rimora.git
-cd Rimora
+git clone https://github.com/Aderimo/rimora-opensource.git
+cd rimora-opensource
 npm install
 ```
 
-### 2. Firebase projesi oluşturun
+### 2. Create a Firebase project
 
-1. [Firebase Console](https://console.firebase.google.com)'da yeni proje açın
-2. **Authentication** → Sign-in method → *E-posta/Şifre*'yi etkinleştirin
-3. **Firestore Database** oluşturun
-4. **Realtime Database** oluşturun (mesajlaşma ve watch party için)
-5. **Storage** etkinleştirin
-6. Project Settings → General → *Your apps* → Web app ekleyin, SDK config değerlerini not alın
+1. Open a new project in the [Firebase Console](https://console.firebase.google.com)
+2. **Authentication** → Sign-in method → enable *Email/Password*
+3. Create a **Firestore Database**
+4. Create a **Realtime Database** (messaging and watch parties)
+5. Enable **Storage**
+6. Project Settings → General → *Your apps* → add a Web app, note the SDK config values
 
-### 3. Ortam değişkenlerini doldurun
+### 3. Fill in environment variables
 
 ```bash
 cp .env.example .env.local
 ```
 
-`.env.local` içindeki alanları doldurun. En az şunlar gerekli:
+Fill the fields in `.env.local`. At minimum:
 
 - `NEXT_PUBLIC_FIREBASE_*` — Firebase web SDK config
-- `TMDB_API_KEY` — [themoviedb.org](https://www.themoviedb.org/settings/api) üzerinden ücretsiz alınır
+- `TMDB_API_KEY` — free from [themoviedb.org](https://www.themoviedb.org/settings/api)
 
-iyzico, Resend ve Cloudinary opsiyoneldir; boş bırakılırsa ilgili özellikler devre dışı kalır.
+iyzico, Resend and Cloudinary are optional; leaving them empty disables those features.
 
-### 4. Firebase kurallarını yükleyin
+### 4. Deploy Firebase rules
 
-`.firebaserc` içindeki `your-firebase-project-id` değerini kendi proje kimliğinizle değiştirin, sonra:
+Replace `your-firebase-project-id` in `.firebaserc` with your own project id, then:
 
 ```bash
 npx firebase deploy --only firestore:rules,storage,database
 ```
 
-### 5. Çalıştırın
+### 5. Run
 
 ```bash
 npm run dev
@@ -99,19 +108,19 @@ npm run dev
 
 http://localhost:3000
 
----
+## Video sources
 
-## Video kaynakları
+The player reads sources from the `NEXT_PUBLIC_VIDEO_SOURCES` environment variable.
+With no sources defined, the player shows an empty state — the rest of the app works
+normally.
 
-Oynatıcı, kaynakları `NEXT_PUBLIC_VIDEO_SOURCES` ortam değişkeninden okur. Tanımlı kaynak yoksa oynatıcı boş durum gösterir — uygulamanın geri kalanı normal çalışır.
-
-Format, JSON dizisidir. Şablon değişkenleri: `{tmdbId}`, `{season}`, `{episode}`.
+The format is a JSON array. Template variables: `{tmdbId}`, `{season}`, `{episode}`.
 
 ```bash
 NEXT_PUBLIC_VIDEO_SOURCES='[
   {
-    "id": "kendi-cdn",
-    "name": "Sunucu 1",
+    "id": "my-cdn",
+    "name": "Server 1",
     "quality": "1080p",
     "language": "TR",
     "priority": 1,
@@ -121,45 +130,41 @@ NEXT_PUBLIC_VIDEO_SOURCES='[
 ]'
 ```
 
-Birden fazla kaynak tanımlarsanız `priority` sırasına göre listelenir ve kullanıcı sunucular arasında geçiş yapabilir.
+Define multiple sources and they're listed by `priority`; users can switch servers.
 
-⚠️ **Sorumluluk:** Bu proje bilerek kaynaksız dağıtılır. Yalnızca yayın hakkına sahip olduğunuz veya size bu hakkı veren kaynakları bağlayın. Bağladığınız içeriklerin hukuki sorumluluğu tamamen size aittir.
+⚠️ **Responsibility:** this project intentionally ships source-free. Only connect
+sources you own the streaming rights to or that grant you those rights. Legal
+responsibility for connected content is entirely yours.
 
----
-
-## Komutlar
+## Commands
 
 ```bash
-npm run dev            # geliştirme sunucusu
+npm run dev            # development server
 npm run build          # production build
-npm run start          # production sunucu
+npm run start          # production server
 npm run lint           # ESLint
-npm run test           # birim testleri (Vitest)
-npm run test:coverage  # kapsam raporu
-npm run test:e2e       # E2E testleri (Playwright)
-npm run test:security  # Firestore güvenlik kuralı testleri
+npm run test           # unit tests (Vitest)
+npm run test:coverage  # coverage report
+npm run test:e2e       # E2E tests (Playwright)
+npm run test:security  # Firestore security-rule tests
 ```
 
----
+## Deployment
 
-## Dağıtım
+Configured to run on Vercel (Netlify scripts are also included).
 
-Proje Vercel üzerinde çalışacak şekilde yapılandırılmıştır (Netlify betikleri de mevcuttur).
+1. Connect the repo to Vercel
+2. Add every variable from `.env.local` to Vercel → Settings → Environment Variables
+3. Deploy
 
-1. Repoyu Vercel'e bağlayın
-2. `.env.local` içindeki tüm değişkenleri Vercel → Settings → Environment Variables bölümüne ekleyin
-3. Deploy edin
+The `prebuild` step auto-generates the Firebase Cloud Messaging service worker from
+`public/firebase-messaging-sw.template.js` — the generated file is not committed.
 
-`prebuild` adımı Firebase Cloud Messaging service worker'ını `public/firebase-messaging-sw.template.js` şablonundan otomatik üretir — üretilen dosya repoya dahil edilmez.
+## Contributing
 
----
+Open to issues and pull requests. For big changes, opening an issue to discuss first
+is appreciated.
 
-## Katkı
-
-Issue ve pull request'lere açıktır. Büyük değişikliklerden önce issue açıp konuşmak iyi olur.
-
----
-
-## Lisans
+## License
 
 [MIT](LICENSE)
